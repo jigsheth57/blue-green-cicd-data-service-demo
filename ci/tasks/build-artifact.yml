@@ -13,4 +13,4 @@ outputs:
   - name: build-artifact
 
 run:
-  path: lab-repo/lab1/ci/tasks/build-artifact.sh
+  path: lab-repo/ci/tasks/build-artifact.sh

@@ -8,6 +8,6 @@ sleep 20
 
 rabbitmqctl status
 
-cd lab-repo/lab1/contactDataService
+cd lab-repo/contactDataService
 
 mvn clean test -Djava.version=1.7

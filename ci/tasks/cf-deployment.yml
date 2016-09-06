@@ -10,7 +10,7 @@ inputs:
   - name: lab-release
 
 run:
-  path: lab-repo/lab1/ci/tasks/cf-deployment.sh
+  path: lab-repo/ci/tasks/cf-deployment.sh
 
 params:
   API_ENDPOINT: {{cf-dev-api}}

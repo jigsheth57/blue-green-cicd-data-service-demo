@@ -2,10 +2,10 @@
 set -e
 version=`cat version/number`
 
-cd lab-repo/lab1/contactDataService
+cd lab-repo/contactDataService
 
 mvn clean versions:set -DnewVersion=$version
 mvn package -DskipTests=true -Djava.version=1.7
 
-mv target/*.jar ../../../build-artifact
-ls -laF ../../../build-artifact
+mv target/*.jar ../../build-artifact
+ls -laF ../../build-artifact

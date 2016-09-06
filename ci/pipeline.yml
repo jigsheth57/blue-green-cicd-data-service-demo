@@ -3,7 +3,7 @@ resources:
 - name: lab-repo
   type: git
   source:
-    uri: git@github.com:jigsheth57/Cloud-Native-Workshop.git
+    uri: git@github.com:jigsheth57/blue-green-cicd-data-service-demo.git
     branch: master
     private_key: {{git_private_key}}
 
@@ -31,7 +31,7 @@ jobs:
   - get: lab-repo
     trigger: true
   - task: unit-test
-    file: lab-repo/lab1/ci/tasks/unit-test.yml
+    file: lab-repo/ci/tasks/unit-test.yml
     timeout: 5m
 
 - name: build-binary
@@ -44,12 +44,16 @@ jobs:
   - get: version
     params: {bump: patch}
   - task: build-artifact
-    file: lab-repo/lab1/ci/tasks/build-artifact.yml
+    file: lab-repo/ci/tasks/build-artifact.yml
     timeout: 5m
   - put: lab-release
     params: {file: build-artifact/contactDataService-*.jar}
   - put: version
     params: {file: version/number}
+  - put: lab-repo
+    params:
+      repository: lab-repo
+      tag: version/number
 
 - name: acceptance-tests
   plan:
@@ -70,7 +74,7 @@ jobs:
         - name: lab-repo
         - name: lab-release
       run:
-        path: lab-repo/lab1/ci/tasks/cf-deployment.sh
+        path: lab-repo/ci/tasks/cf-deployment.sh
       params:
         API_ENDPOINT: {{cf-dev-api}}
         USERNAME: {{cf-dev-username}}
@@ -98,7 +102,7 @@ jobs:
         - name: lab-repo
         - name: lab-release
       run:
-        path: lab-repo/lab1/ci/tasks/cf-deployment.sh
+        path: lab-repo/ci/tasks/cf-deployment.sh
       params:
         API_ENDPOINT: {{cf-prod-api}}
         USERNAME: {{cf-prod-username}}

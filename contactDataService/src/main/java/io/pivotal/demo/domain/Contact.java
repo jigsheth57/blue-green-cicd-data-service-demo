@@ -23,6 +23,9 @@ public class Contact {
 	
 	@Column(nullable=true)
 	private String title, email;
+
+//	@Column(nullable=true)
+//	private String marital_status;
 	
 	@Embedded
 	private Phone phone;
@@ -85,16 +88,27 @@ public class Contact {
 		this.phone = phone;
 	}
 
+//	public String getMarital_status() {
+//		return marital_status;
+//	}
+//
+//	public void setMarital_status(String marital_status) {
+//		this.marital_status = marital_status;
+//	}
+
 	@Override
 	public String toString() {
 		return String.format(
 				"{\"Id\": %d, \"title\": \"%s\", \"firstName\": \"%s\", \"lastName\": \"%s\", \"email\": \"%s\", \"phone\": %s}",
+//				"{\"Id\": %d, \"title\": \"%s\", \"firstName\": \"%s\", \"lastName\": \"%s\", \"email\": \"%s\", \"phone\": %s, \"marital_status\": %s}",
 				Id, 
 				title, 
 				firstName,
 				lastName,
 				email,
 				phone);
+//				phone,
+//				marital_status);
 	}
 	
 	

@@ -12,4 +12,6 @@ public interface ContactRepository extends JpaRepository<Contact, Long>{
 	List<Contact> findAll();
 
 	List<Contact> findByFirstNameOrLastName(@Param("firstName") String firstName, @Param("lastName") String lastName); 
+
+//	List<Contact> findByMaritalStatus(@Param("marital_status") String marital_status); 
 }

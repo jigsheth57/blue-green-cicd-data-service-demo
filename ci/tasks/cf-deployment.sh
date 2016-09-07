@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -x
+set -e
 
 # login to PWS
 echo "Login to PWS ....."

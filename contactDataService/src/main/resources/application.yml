@@ -5,6 +5,8 @@ spring:
     generate-ddl: false
     hibernate:
       ddl-auto: none
+  datasource:
+    continue-on-error: true
   rabbitmq:
     host: ${vcap.services.p-rabbitmq.credentials.protocols.amqp.host:localhost}
     port: ${vcap.services.p-rabbitmq.credentials.protocols.amqp.port:5672}

@@ -84,7 +84,7 @@ public class ContactRepositoryTests {
 	public void testfindByMaritalStatus() {
 		
 		Contact firstContact = contactRepo.findAll().iterator().next();
-		List<Contact> resultOfFindByMaritalStatus = contactRepo.findByMaritalStatus(firstContact.getMarital_status());
+		List<Contact> resultOfFindByMaritalStatus = contactRepo.findByMarital_status(firstContact.getMarital_status());
 		TestCase.assertEquals(
 				firstContact.getMarital_status(), 
 				resultOfFindByMaritalStatus.get(0).getMarital_status());

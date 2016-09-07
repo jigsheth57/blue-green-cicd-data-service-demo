@@ -70,7 +70,7 @@ public class ContactController {
         @ApiImplicitParam(name = "marital_status", value = "Contact's marital status", required = false, dataType = "string", paramType = "query", defaultValue="married")
       })
 	public @ResponseBody List<Contact> getContactByMaritalStatus(@RequestParam(value="marital_status", required=false) String marital_status) {
-		return contactRepo.findByMaritalStatus(marital_status);
+		return contactRepo.findByMarital_status(marital_status);
 	}
 
     @RequestMapping(value = "/contact/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)

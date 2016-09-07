@@ -1,7 +1,5 @@
 package io.pivotal.demo.domain.unit;
 
-import java.sql.Date;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,7 +19,7 @@ public class ContactTests {
 	private Contact contact;
 	
 //	private static final String CONTACT_TO_JSON_PATTERN = "{\"Id\": %d, \"title\": \"%s\", \"firstName\": \"%s\", \"lastName\": \"%s\", \"email\": \"%s\", \"phone\": %s}";
-	private static final String CONTACT_TO_JSON_PATTERN = "{\"Id\": %d, \"title\": \"%s\", \"firstName\": \"%s\", \"lastName\": \"%s\", \"email\": \"%s\", \"phone\": %s, \"marital_status\": %s}";
+	private static final String CONTACT_TO_JSON_PATTERN = "{\"Id\": %d, \"title\": \"%s\", \"firstName\": \"%s\", \"lastName\": \"%s\", \"email\": \"%s\", \"phone\": %s, \"maritalStatus\": %s}";
 	
 	/**
 	 * Builds the Contact object to test
@@ -33,8 +31,8 @@ public class ContactTests {
 		final String lastName = "lastName";
 		final String email = "email";
 		final Phone phone = new Phone(PhoneType.work,"312-555-1212");
-		final String marital_status = "married";
-		contact = new Contact(title, firstName, lastName, email, phone, marital_status);
+		final String maritalStatus = "married";
+		contact = new Contact(title, firstName, lastName, email, phone, maritalStatus);
 //		contact = new Contact(title, firstName, lastName, email, phone);
 	}
 	
@@ -51,7 +49,7 @@ public class ContactTests {
 				contact.getEmail(),
 //				contact.getPhone());
 				contact.getPhone(),
-				contact.getMarital_status());
+				contact.getMaritalStatus());
 
 		TestCase.assertEquals(
 				"The toString method should match the pattern [" 

@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.arjuna.ats.internal.arjuna.objectstore.jdbc.drivers.mariadb_driver;
-
 import io.pivotal.demo.repository.LogListener;
 
 @Entity
@@ -27,20 +25,20 @@ public class Contact {
 	private String title, email;
 
 	@Column(nullable=true)
-	private String marital_status;
+	private String maritalStatus;
 	
 	@Embedded
 	private Phone phone;
 	
 	public Contact() {}
 	
-	public Contact (String title, String firstName, String lastName, String email, Phone phone, String marital_status) {
+	public Contact (String title, String firstName, String lastName, String email, Phone phone, String maritalStatus) {
 		this.title = title;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.phone = phone;
-		this.marital_status = marital_status;
+		this.maritalStatus = maritalStatus;
 	}
 
 	public Long getId() {
@@ -91,19 +89,19 @@ public class Contact {
 		this.phone = phone;
 	}
 
-	public String getMarital_status() {
-		return marital_status;
+	public String getMaritalStatus() {
+		return maritalStatus;
 	}
 
-	public void setMarital_status(String marital_status) {
-		this.marital_status = marital_status;
+	public void setMaritalStatus(String maritalStatus) {
+		this.maritalStatus = maritalStatus;
 	}
 
 	@Override
 	public String toString() {
 		return String.format(
 //				"{\"Id\": %d, \"title\": \"%s\", \"firstName\": \"%s\", \"lastName\": \"%s\", \"email\": \"%s\", \"phone\": %s}",
-				"{\"Id\": %d, \"title\": \"%s\", \"firstName\": \"%s\", \"lastName\": \"%s\", \"email\": \"%s\", \"phone\": %s, \"marital_status\": %s}",
+				"{\"Id\": %d, \"title\": \"%s\", \"firstName\": \"%s\", \"lastName\": \"%s\", \"email\": \"%s\", \"phone\": %s, \"maritalStatus\": %s}",
 				Id, 
 				title, 
 				firstName,
@@ -111,7 +109,7 @@ public class Contact {
 				email,
 //				phone);
 				phone,
-				marital_status);
+				maritalStatus);
 	}
 	
 	

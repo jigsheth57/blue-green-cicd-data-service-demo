@@ -67,10 +67,10 @@ public class ContactController {
     @RequestMapping(value ="/contact", method = RequestMethod.GET)
     @ApiOperation(value = "Retrieve contact by marital status.",notes = "Calls contact repository to retrieve contact by marital status.", response = Contact.class, responseContainer = "List")
     @ApiImplicitParams({
-        @ApiImplicitParam(name = "marital_status", value = "Contact's marital status", required = false, dataType = "string", paramType = "query", defaultValue="married")
+        @ApiImplicitParam(name = "maritalStatus", value = "Contact's marital status", required = false, dataType = "string", paramType = "query", defaultValue="married")
       })
-	public @ResponseBody List<Contact> getContactByMaritalStatus(@RequestParam(value="marital_status", required=false) String marital_status) {
-		return contactRepo.findByMarital_status(marital_status);
+	public @ResponseBody List<Contact> getContactByMaritalStatus(@RequestParam(value="maritalStatus", required=false) String maritalStatus) {
+		return contactRepo.findByMaritalStatus(maritalStatus);
 	}
 
     @RequestMapping(value = "/contact/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)

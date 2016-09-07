@@ -84,10 +84,10 @@ public class ContactRepositoryTests {
 	public void testfindByMaritalStatus() {
 		
 		Contact firstContact = contactRepo.findAll().iterator().next();
-		List<Contact> resultOfFindByMaritalStatus = contactRepo.findByMarital_status(firstContact.getMarital_status());
+		List<Contact> resultOfFindByMaritalStatus = contactRepo.findByMaritalStatus(firstContact.getMaritalStatus());
 		TestCase.assertEquals(
-				firstContact.getMarital_status(), 
-				resultOfFindByMaritalStatus.get(0).getMarital_status());
+				firstContact.getMaritalStatus(), 
+				resultOfFindByMaritalStatus.get(0).getMaritalStatus());
 		
 	}
 	
@@ -105,8 +105,8 @@ public class ContactRepositoryTests {
 		final String lastName = "lastName";
 		final String email = "email";
 		final Phone phone = new Phone(PhoneType.work,"312-555-1212");
-		final String marital_status = "married";
-		Contact newContact = new Contact(title, firstName, lastName, email, phone, marital_status);
+		final String maritalStatus = "married";
+		Contact newContact = new Contact(title, firstName, lastName, email, phone, maritalStatus);
 //		Contact newContact = new Contact(title, firstName, lastName, email, phone);
 		newContact = contactRepo.save(newContact);
 		Contact savedContact = 
@@ -122,7 +122,7 @@ public class ContactRepositoryTests {
 		TestCase.assertEquals(
 				phone.toString(), savedContact.getPhone().toString());
 		TestCase.assertEquals(
-				marital_status, savedContact.getMarital_status());
+				maritalStatus, savedContact.getMaritalStatus());
 	}
 
 	/**
@@ -139,7 +139,7 @@ public class ContactRepositoryTests {
 		String lastName = contact.getLastName();
 		String email = contact.getEmail();
 		Phone phone = contact.getPhone();
-		String marital_status = contact.getMarital_status();
+		String maritalStatus = contact.getMaritalStatus();
 		Contact updatedContact = contact;
 		Phone updatedPhone = new Phone(PhoneType.main,"312-555-1212");
 		updatedContact.setTitle(title+"_updated");
@@ -147,7 +147,7 @@ public class ContactRepositoryTests {
 		updatedContact.setLastName(lastName+"_updated");
 		updatedContact.setEmail(email+"_updated");
 		updatedContact.setPhone(updatedPhone);
-		updatedContact.setMarital_status(marital_status+"_updated");
+		updatedContact.setMaritalStatus(maritalStatus+"_updated");
 		updatedContact = contactRepo.save(updatedContact);
 		Contact savedContact = 
 				contactRepo.findOne(updatedContact.getId());
@@ -162,7 +162,7 @@ public class ContactRepositoryTests {
 		TestCase.assertEquals(
 				updatedPhone.toString(), savedContact.getPhone().toString());
 		TestCase.assertEquals(
-				marital_status+"_updated", savedContact.getMarital_status());
+				maritalStatus+"_updated", savedContact.getMaritalStatus());
 	}
 
 	/**

@@ -2,6 +2,8 @@ package io.pivotal.demo.repository.integration;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import io.pivotal.demo.controller.ContactController;
 import io.pivotal.demo.domain.Contact;
 import io.pivotal.demo.domain.Phone;
 import io.pivotal.demo.domain.PhoneType;
@@ -36,6 +39,7 @@ public class ContactRepositoryTests {
 //	public static Contact contact = new Contact("title", "firstName", "lastName", "email", new Phone(PhoneType.work,"312-555-1212"));
 	public static Contact contact = new Contact("title", "firstName", "lastName", "email", new Phone(PhoneType.work,"312-555-1212"), "married");
 
+	private static final Log log = LogFactory.getLog(ContactRepositoryTests.class);
 	//The repository to test.
 	@Autowired
 	ContactRepository contactRepo;
@@ -139,7 +143,7 @@ public class ContactRepositoryTests {
 		String lastName = contact.getLastName();
 		String email = contact.getEmail();
 		Phone phone = contact.getPhone();
-		String maritalStatus = contact.getMaritalStatus();
+		String maritalStatus = "single";
 		Contact updatedContact = contact;
 		Phone updatedPhone = new Phone(PhoneType.main,"312-555-1212");
 		updatedContact.setTitle(title+"_updated");
@@ -147,10 +151,13 @@ public class ContactRepositoryTests {
 		updatedContact.setLastName(lastName+"_updated");
 		updatedContact.setEmail(email+"_updated");
 		updatedContact.setPhone(updatedPhone);
-		updatedContact.setMaritalStatus(maritalStatus+"_updated");
+		updatedContact.setMaritalStatus(maritalStatus);
+		log.debug("Before to saving: "+updatedContact);
 		updatedContact = contactRepo.save(updatedContact);
+		log.debug("After to saving: "+updatedContact);
 		Contact savedContact = 
 				contactRepo.findOne(updatedContact.getId());
+		log.debug("After to saving: "+savedContact);
 		TestCase.assertEquals(
 				title+"_updated", savedContact.getTitle());
 		TestCase.assertEquals(
@@ -162,7 +169,7 @@ public class ContactRepositoryTests {
 		TestCase.assertEquals(
 				updatedPhone.toString(), savedContact.getPhone().toString());
 		TestCase.assertEquals(
-				maritalStatus+"_updated", savedContact.getMaritalStatus());
+				maritalStatus, savedContact.getMaritalStatus());
 	}
 
 	/**
@@ -174,6 +181,8 @@ public class ContactRepositoryTests {
 	 */
 	@Test
 	public void testDelete() {
+		
+		log.debug("Before deleting: "+contact);
 		
 		contactRepo.delete(contact.getId());
 		Contact savedContact = 

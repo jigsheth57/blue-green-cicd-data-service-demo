@@ -10,4 +10,4 @@ rabbitmqctl status
 
 cd lab-repo/contactDataService
 
-mvn clean test -Djava.version=1.7
+mvn clean test -Djava.version=1.7 -Dspring.profiles.active=local

@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import io.pivotal.demo.controller.ContactController;
 import io.pivotal.demo.domain.Contact;
 import io.pivotal.demo.domain.Phone;
 import io.pivotal.demo.domain.PhoneType;
@@ -36,8 +35,8 @@ import junit.framework.TestCase;
 @SpringBootTest
 public class ContactRepositoryTests {
 	
-//	public static Contact contact = new Contact("title", "firstName", "lastName", "email", new Phone(PhoneType.work,"312-555-1212"));
-	public static Contact contact = new Contact("title", "firstName", "lastName", "email", new Phone(PhoneType.work,"312-555-1212"), "married");
+	public static Contact contact = new Contact("title", "firstName", "lastName", "email", new Phone(PhoneType.work,"312-555-1212"));
+//	public static Contact contact = new Contact("title", "firstName", "lastName", "email", new Phone(PhoneType.work,"312-555-1212"), "married");
 
 	private static final Log log = LogFactory.getLog(ContactRepositoryTests.class);
 	//The repository to test.
@@ -84,16 +83,15 @@ public class ContactRepositoryTests {
 	 * using that contact's marital_status to call and assert the 
 	 * findByMaritalStatus method's results.
 	 */
-	@Test
-	public void testfindByMaritalStatus() {
-		
-		Contact firstContact = contactRepo.findAll().iterator().next();
-		List<Contact> resultOfFindByMaritalStatus = contactRepo.findByMaritalStatus(firstContact.getMaritalStatus());
-		TestCase.assertEquals(
-				firstContact.getMaritalStatus(), 
-				resultOfFindByMaritalStatus.get(0).getMaritalStatus());
-		
-	}
+//	@Test
+//	public void testfindByMaritalStatus() {
+//		
+//		Contact firstContact = contactRepo.findAll().iterator().next();
+//		List<Contact> resultOfFindByMaritalStatus = contactRepo.findByMaritalStatus(firstContact.getMaritalStatus());
+//		TestCase.assertEquals(
+//				firstContact.getMaritalStatus(), 
+//				resultOfFindByMaritalStatus.get(0).getMaritalStatus());
+//	}
 	
 	/**
 	 * Tests the repository's save method, by
@@ -109,9 +107,9 @@ public class ContactRepositoryTests {
 		final String lastName = "lastName";
 		final String email = "email";
 		final Phone phone = new Phone(PhoneType.work,"312-555-1212");
-		final String maritalStatus = "married";
-		Contact newContact = new Contact(title, firstName, lastName, email, phone, maritalStatus);
-//		Contact newContact = new Contact(title, firstName, lastName, email, phone);
+//		final String maritalStatus = "married";
+//		Contact newContact = new Contact(title, firstName, lastName, email, phone, maritalStatus);
+		Contact newContact = new Contact(title, firstName, lastName, email, phone);
 		newContact = contactRepo.save(newContact);
 		Contact savedContact = 
 				contactRepo.findOne(newContact.getId());
@@ -125,8 +123,8 @@ public class ContactRepositoryTests {
 				email, savedContact.getEmail());
 		TestCase.assertEquals(
 				phone.toString(), savedContact.getPhone().toString());
-		TestCase.assertEquals(
-				maritalStatus, savedContact.getMaritalStatus());
+//		TestCase.assertEquals(
+//				maritalStatus, savedContact.getMaritalStatus());
 	}
 
 	/**
@@ -143,7 +141,7 @@ public class ContactRepositoryTests {
 		String lastName = contact.getLastName();
 		String email = contact.getEmail();
 		Phone phone = contact.getPhone();
-		String maritalStatus = "single";
+//		String maritalStatus = "single";
 		Contact updatedContact = contact;
 		Phone updatedPhone = new Phone(PhoneType.main,"312-555-1212");
 		updatedContact.setTitle(title+"_updated");
@@ -151,7 +149,7 @@ public class ContactRepositoryTests {
 		updatedContact.setLastName(lastName+"_updated");
 		updatedContact.setEmail(email+"_updated");
 		updatedContact.setPhone(updatedPhone);
-		updatedContact.setMaritalStatus(maritalStatus);
+//		updatedContact.setMaritalStatus(maritalStatus);
 		log.debug("Before to saving: "+updatedContact);
 		updatedContact = contactRepo.save(updatedContact);
 		log.debug("After to saving: "+updatedContact);
@@ -168,8 +166,8 @@ public class ContactRepositoryTests {
 				email+"_updated", savedContact.getEmail());
 		TestCase.assertEquals(
 				updatedPhone.toString(), savedContact.getPhone().toString());
-		TestCase.assertEquals(
-				maritalStatus, savedContact.getMaritalStatus());
+//		TestCase.assertEquals(
+//				maritalStatus, savedContact.getMaritalStatus());
 	}
 
 	/**

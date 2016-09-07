@@ -64,7 +64,7 @@ public class ContactController {
 		return contactRepo.findByFirstNameOrLastName(fname, lname);
 	}
 
-	@RequestMapping(value = "/contact/{maritalStatus}", method = RequestMethod.GET)
+	@RequestMapping(value = "/contact/maritalstatus/{maritalStatus}", method = RequestMethod.GET)
     @ApiOperation(value = "Retrieve contact by marital status.",notes = "Calls contact repository to retrieve contact by marital status.", response = Contact.class, responseContainer = "List")
     @ApiImplicitParams({
         @ApiImplicitParam(name = "maritalStatus", value = "Contact's marital status", required = false, dataType = "string", paramType = "path", defaultValue="married")

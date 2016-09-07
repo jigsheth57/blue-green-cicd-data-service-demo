@@ -20,8 +20,8 @@ public class ContactTests {
 
 	private Contact contact;
 	
-	private static final String CONTACT_TO_JSON_PATTERN = "{\"Id\": %d, \"title\": \"%s\", \"firstName\": \"%s\", \"lastName\": \"%s\", \"email\": \"%s\", \"phone\": %s}";
-//	private static final String CONTACT_TO_JSON_PATTERN = "{\"Id\": %d, \"title\": \"%s\", \"firstName\": \"%s\", \"lastName\": \"%s\", \"email\": \"%s\", \"phone\": %s, \"marital_status\": %s}";
+//	private static final String CONTACT_TO_JSON_PATTERN = "{\"Id\": %d, \"title\": \"%s\", \"firstName\": \"%s\", \"lastName\": \"%s\", \"email\": \"%s\", \"phone\": %s}";
+	private static final String CONTACT_TO_JSON_PATTERN = "{\"Id\": %d, \"title\": \"%s\", \"firstName\": \"%s\", \"lastName\": \"%s\", \"email\": \"%s\", \"phone\": %s, \"marital_status\": %s}";
 	
 	/**
 	 * Builds the Contact object to test
@@ -33,9 +33,9 @@ public class ContactTests {
 		final String lastName = "lastName";
 		final String email = "email";
 		final Phone phone = new Phone(PhoneType.work,"312-555-1212");
-//		final String marital_status = "married";
-//		contact = new Contact(title, firstName, lastName, email, phone, marital_status);
-		contact = new Contact(title, firstName, lastName, email, phone);
+		final String marital_status = "married";
+		contact = new Contact(title, firstName, lastName, email, phone, marital_status);
+//		contact = new Contact(title, firstName, lastName, email, phone);
 	}
 	
 	/**
@@ -49,9 +49,9 @@ public class ContactTests {
 				contact.getFirstName(),
 				contact.getLastName(),
 				contact.getEmail(),
-				contact.getPhone());
-//				contact.getPhone(),
-//				contact.getMarital_status());
+//				contact.getPhone());
+				contact.getPhone(),
+				contact.getMarital_status());
 
 		TestCase.assertEquals(
 				"The toString method should match the pattern [" 

@@ -33,8 +33,8 @@ import junit.framework.TestCase;
 @SpringBootTest
 public class ContactRepositoryTests {
 	
-	public static Contact contact = new Contact("title", "firstName", "lastName", "email", new Phone(PhoneType.work,"312-555-1212"));
-//	public static Contact contact = new Contact("title", "firstName", "lastName", "email", new Phone(PhoneType.work,"312-555-1212"), "married");
+//	public static Contact contact = new Contact("title", "firstName", "lastName", "email", new Phone(PhoneType.work,"312-555-1212"));
+	public static Contact contact = new Contact("title", "firstName", "lastName", "email", new Phone(PhoneType.work,"312-555-1212"), "married");
 
 	//The repository to test.
 	@Autowired
@@ -80,16 +80,16 @@ public class ContactRepositoryTests {
 	 * using that contact's marital_status to call and assert the 
 	 * findByMaritalStatus method's results.
 	 */
-//	@Test
-//	public void testfindByMaritalStatus() {
-//		
-//		Contact firstContact = contactRepo.findAll().iterator().next();
-//		List<Contact> resultOfFindByMaritalStatus = contactRepo.findByMaritalStatus(firstContact.getMarital_status());
-//		TestCase.assertEquals(
-//				firstContact.getMarital_status(), 
-//				resultOfFindByMaritalStatus.get(0).getMarital_status());
-//		
-//	}
+	@Test
+	public void testfindByMaritalStatus() {
+		
+		Contact firstContact = contactRepo.findAll().iterator().next();
+		List<Contact> resultOfFindByMaritalStatus = contactRepo.findByMaritalStatus(firstContact.getMarital_status());
+		TestCase.assertEquals(
+				firstContact.getMarital_status(), 
+				resultOfFindByMaritalStatus.get(0).getMarital_status());
+		
+	}
 	
 	/**
 	 * Tests the repository's save method, by
@@ -105,9 +105,9 @@ public class ContactRepositoryTests {
 		final String lastName = "lastName";
 		final String email = "email";
 		final Phone phone = new Phone(PhoneType.work,"312-555-1212");
-//		final String marital_status = "married";
-//		Contact newContact = new Contact(title, firstName, lastName, email, phone, marital_status);
-		Contact newContact = new Contact(title, firstName, lastName, email, phone);
+		final String marital_status = "married";
+		Contact newContact = new Contact(title, firstName, lastName, email, phone, marital_status);
+//		Contact newContact = new Contact(title, firstName, lastName, email, phone);
 		newContact = contactRepo.save(newContact);
 		Contact savedContact = 
 				contactRepo.findOne(newContact.getId());
@@ -121,8 +121,8 @@ public class ContactRepositoryTests {
 				email, savedContact.getEmail());
 		TestCase.assertEquals(
 				phone.toString(), savedContact.getPhone().toString());
-//		TestCase.assertEquals(
-//				marital_status, savedContact.getMarital_status());
+		TestCase.assertEquals(
+				marital_status, savedContact.getMarital_status());
 	}
 
 	/**
@@ -139,7 +139,7 @@ public class ContactRepositoryTests {
 		String lastName = contact.getLastName();
 		String email = contact.getEmail();
 		Phone phone = contact.getPhone();
-//		String marital_status = contact.getMarital_status();
+		String marital_status = contact.getMarital_status();
 		Contact updatedContact = contact;
 		Phone updatedPhone = new Phone(PhoneType.main,"312-555-1212");
 		updatedContact.setTitle(title+"_updated");
@@ -147,7 +147,7 @@ public class ContactRepositoryTests {
 		updatedContact.setLastName(lastName+"_updated");
 		updatedContact.setEmail(email+"_updated");
 		updatedContact.setPhone(updatedPhone);
-//		updatedContact.setMarital_status(marital_status+"_updated");
+		updatedContact.setMarital_status(marital_status+"_updated");
 		updatedContact = contactRepo.save(updatedContact);
 		Contact savedContact = 
 				contactRepo.findOne(updatedContact.getId());
@@ -161,8 +161,8 @@ public class ContactRepositoryTests {
 				email+"_updated", savedContact.getEmail());
 		TestCase.assertEquals(
 				updatedPhone.toString(), savedContact.getPhone().toString());
-//		TestCase.assertEquals(
-//				marital_status+"_updated", savedContact.getMarital_status());
+		TestCase.assertEquals(
+				marital_status+"_updated", savedContact.getMarital_status());
 	}
 
 	/**

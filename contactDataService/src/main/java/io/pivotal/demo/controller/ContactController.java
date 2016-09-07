@@ -64,14 +64,14 @@ public class ContactController {
 		return contactRepo.findByFirstNameOrLastName(fname, lname);
 	}
 
-//    @RequestMapping(value ="/contact", method = RequestMethod.GET)
-//    @ApiOperation(value = "Retrieve contact by marital status.",notes = "Calls contact repository to retrieve contact by marital status.", response = Contact.class, responseContainer = "List")
-//    @ApiImplicitParams({
-//        @ApiImplicitParam(name = "marital_status", value = "Contact's marital status", required = false, dataType = "string", paramType = "query", defaultValue="married")
-//      })
-//	public @ResponseBody List<Contact> getContactByMaritalStatus(@RequestParam(value="marital_status", required=false) String marital_status) {
-//		return contactRepo.findByMaritalStatus(marital_status);
-//	}
+    @RequestMapping(value ="/contact", method = RequestMethod.GET)
+    @ApiOperation(value = "Retrieve contact by marital status.",notes = "Calls contact repository to retrieve contact by marital status.", response = Contact.class, responseContainer = "List")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "marital_status", value = "Contact's marital status", required = false, dataType = "string", paramType = "query", defaultValue="married")
+      })
+	public @ResponseBody List<Contact> getContactByMaritalStatus(@RequestParam(value="marital_status", required=false) String marital_status) {
+		return contactRepo.findByMaritalStatus(marital_status);
+	}
 
     @RequestMapping(value = "/contact/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Delete contact by id",notes = "Calls contact repository to remove contact by id")

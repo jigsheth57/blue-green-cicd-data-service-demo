@@ -64,7 +64,7 @@ public class ContactDataServiceApplication implements CommandLineRunner {
         		.apiInfo(apiInfo())
         		.select()                                  
                 .apis(RequestHandlerSelectors.any())              
-                .paths(PathSelectors.regex("/api/*"))                          
+                .paths(PathSelectors.ant("/api/*"))                          
                 .build();  
     }
      

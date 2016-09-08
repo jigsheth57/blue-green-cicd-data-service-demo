@@ -24,30 +24,30 @@ public class Contact {
 	@Column(nullable=true)
 	private String title, email;
 
-	@Column(nullable=true)
-	private String maritalStatus;
+//	@Column(nullable=true)
+//	private String maritalStatus;
 	
 	@Embedded
 	private Phone phone;
 	
 	public Contact() {}
 	
-//	public Contact (String title, String firstName, String lastName, String email, Phone phone) {
-//		this.title = title;
-//		this.firstName = firstName;
-//		this.lastName = lastName;
-//		this.email = email;
-//		this.phone = phone;
-//	}
-
-	public Contact (String title, String firstName, String lastName, String email, Phone phone, String maritalStatus) {
+	public Contact (String title, String firstName, String lastName, String email, Phone phone) {
 		this.title = title;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.phone = phone;
-		this.maritalStatus = maritalStatus;
 	}
+
+//	public Contact (String title, String firstName, String lastName, String email, Phone phone, String maritalStatus) {
+//		this.title = title;
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.email = email;
+//		this.phone = phone;
+//		this.maritalStatus = maritalStatus;
+//	}
 
 	public Long getId() {
 		return Id;
@@ -97,27 +97,27 @@ public class Contact {
 		this.phone = phone;
 	}
 
-	public String getMaritalStatus() {
-		return maritalStatus;
-	}
-
-	public void setMaritalStatus(String maritalStatus) {
-		this.maritalStatus = maritalStatus;
-	}
+//	public String getMaritalStatus() {
+//		return maritalStatus;
+//	}
+//
+//	public void setMaritalStatus(String maritalStatus) {
+//		this.maritalStatus = maritalStatus;
+//	}
 
 	@Override
 	public String toString() {
 		return String.format(
-//				"{\"Id\": %d, \"title\": \"%s\", \"firstName\": \"%s\", \"lastName\": \"%s\", \"email\": \"%s\", \"phone\": %s}",
-				"{\"Id\": %d, \"title\": \"%s\", \"firstName\": \"%s\", \"lastName\": \"%s\", \"email\": \"%s\", \"phone\": %s, \"maritalStatus\": \"%s\"}",
+				"{\"Id\": %d, \"title\": \"%s\", \"firstName\": \"%s\", \"lastName\": \"%s\", \"email\": \"%s\", \"phone\": %s}",
+//				"{\"Id\": %d, \"title\": \"%s\", \"firstName\": \"%s\", \"lastName\": \"%s\", \"email\": \"%s\", \"phone\": %s, \"maritalStatus\": \"%s\"}",
 				Id, 
 				title, 
 				firstName,
 				lastName,
 				email,
-//				phone);
-				phone,
-				maritalStatus);
+				phone);
+//				phone,
+//				maritalStatus);
 	}
 	
 	

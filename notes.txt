@@ -1,0 +1,5 @@
+cf cs p-mysql 100mb-dev p-mysql
+cf cs p-rabbitmq standard p-rabbitmq
+cf p demoservice -o jigsheth57/blue-green-cicd-data-service-demo --no-start
+cf set-env demoservice spring.datasource.platform mysql
+cf start demoservice

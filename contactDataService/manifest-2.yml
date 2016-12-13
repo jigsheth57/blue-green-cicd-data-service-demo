@@ -1,0 +1,10 @@
+---
+timeout: 180
+instances: 1
+env:
+    SPRING_PROFILES_ACTIVE: cloud
+applications:
+- name: contactDataService
+  path: build/libs/contactDataService.jar
+  random-route: true
+  services: [ p-mysql, p-rabbitmq]

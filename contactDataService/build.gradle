@@ -1,0 +1,62 @@
+buildscript {
+    ext {
+        springBootVersion = '1.4.0.RELEASE'
+        springCloudConnectorsVersion = '1.2.2.RELEASE'
+    }
+
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url "https://repo.spring.io/plugins-release" }
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+
+apply plugin: 'eclipse-wtp'
+apply plugin: 'idea'
+
+apply plugin: 'spring-boot'
+
+version = '1.0'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/milestone" }
+    maven { url "http://repo.spring.io/snapshot" }
+}
+
+dependencies {
+    // Spring Boot
+    compile "org.springframework.boot:spring-boot-starter-web"
+    compile "org.springframework.boot:spring-boot-starter-actuator"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa"
+    compile "org.springframework.boot:spring-boot-starter-amqp"
+
+    compile "io.springfox:springfox-swagger-ui:2.4.0"
+    compile "io.springfox:springfox-swagger2:2.4.0"
+
+    // JPA Persistence
+    compile "commons-dbcp:commons-dbcp"
+    runtime "com.h2database:h2"
+    runtime "mysql:mysql-connector-java"
+
+    // Testing
+    testCompile "junit:junit"
+}
+
+jar {
+    baseName = "contactDataService"
+    version = "" // omit the version from the war file name
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.14'
+}

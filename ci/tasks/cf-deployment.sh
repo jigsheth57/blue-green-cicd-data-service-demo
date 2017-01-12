@@ -15,7 +15,7 @@ if [ ! -z "$DEPLOYED_VERSION" -a "$DEPLOYED_VERSION" == "blue" ]; then
   CURRENT_VERSION="green"
 fi
 # push a new version and map the route
-cf cs p-mysql 100mb p-mysql
+cf cs cleardb spark p-mysql
 cf cs p-rabbitmq standard p-rabbitmq
 #cf cs p-mysql 100mb-dev p-mysql
 #cf cs p-rabbitmq standard p-rabbitmq

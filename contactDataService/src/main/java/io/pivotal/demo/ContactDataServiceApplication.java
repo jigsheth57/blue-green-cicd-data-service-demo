@@ -45,6 +45,9 @@ public class ContactDataServiceApplication implements CommandLineRunner {
 	@Value("${spring.rabbitmq.password}")
 	String amqp_password;
 	
+	@Value("${spring.data.rest.base-path}")
+	String base_path;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ContactDataServiceApplication.class, args);
 	}

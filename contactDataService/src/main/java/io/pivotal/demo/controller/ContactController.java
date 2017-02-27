@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @RestController
-@RequestMapping(value="/api", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value="${spring.data.rest.base-path}", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ContactController {
 
 	@Autowired

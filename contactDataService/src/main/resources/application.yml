@@ -13,11 +13,16 @@ spring:
     username: ${vcap.services.p-rabbitmq.credentials.protocols.amqp.username:guest}
     password: ${vcap.services.p-rabbitmq.credentials.protocols.amqp.password:guest}
     virtualHost: ${vcap.services.p-rabbitmq.credentials.protocols.amqp.vhost:/}
+  data:
+    rest:
+      base-path: /
+
 
 logging:
   level:
     io.pivotal.demo: INFO
     org.hibernate.SQL: INFO
+
 
 ---
 spring:

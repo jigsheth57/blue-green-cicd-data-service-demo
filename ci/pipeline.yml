@@ -83,7 +83,7 @@ jobs:
         SPACE: {{cf-dev-space}}
         CF_APPS_DOMAIN: {{cf-dev-domain}}
         CF_APP_NAME: contactDataService
-        CF_ROUTE_NAME: contactDataService-dev
+        CF_ROUTE_NAME: cdc-dev
 
 - name: acceptance-tests
   plan:
@@ -113,7 +113,7 @@ jobs:
         SPACE: {{cf-stg-space}}
         CF_APPS_DOMAIN: {{cf-stg-domain}}
         CF_APP_NAME: contactDataService
-        CF_ROUTE_NAME: contactDataService-stg
+        CF_ROUTE_NAME: cdc-stg
 
 - name: manual-deploy-to-prod
   plan:
@@ -141,4 +141,4 @@ jobs:
         SPACE: {{cf-prod-space}}
         CF_APPS_DOMAIN: {{cf-prod-domain}}
         CF_APP_NAME: contactDataService
-        CF_ROUTE_NAME: contactDataService-prod
+        CF_ROUTE_NAME: cdc-prod

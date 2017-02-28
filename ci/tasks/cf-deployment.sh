@@ -11,7 +11,7 @@ DEPLOYED_VERSION_CMD=$(CF_COLOR=false cf routes | grep $CF_ROUTE_NAME | awk '{ p
 DEPLOYED_VERSION="$DEPLOYED_VERSION_CMD"
 echo "Deployed Version: $DEPLOYED_VERSION"
 CURRENT_VERSION="blue"
-if [ ! -z "$DEPLOYED_VERSION" -a "$DEPLOYED_VERSION" == "blue" ]; then
+if [[ ! -z "$DEPLOYED_VERSION" ]] && [[ "$DEPLOYED_VERSION" == *"blue"* ]]; then
   CURRENT_VERSION="green"
 fi
 # push a new version and map the route
@@ -21,7 +21,7 @@ cf cs cloudamqp lemur p-rabbitmq
 # cf cs p-rabbitmq standard p-rabbitmq
 cf p "$CF_APP_NAME-$CURRENT_VERSION" -p lab-release/contactDataService-*.jar -f lab-repo/ci/tasks/manifest.yml
 cf map-route "$CF_APP_NAME-$CURRENT_VERSION" $CF_APPS_DOMAIN -n $CF_ROUTE_NAME
-if [ ! -z "$DEPLOYED_VERSION" ]; then
+if [[ ! -z "$DEPLOYED_VERSION" ]]; then
   # Unmap the route and delete
   cf unmap-route "$CF_APP_NAME-$DEPLOYED_VERSION" $CF_APPS_DOMAIN -n $CF_ROUTE_NAME
   # Scaling down

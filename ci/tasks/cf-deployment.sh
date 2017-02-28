@@ -16,7 +16,7 @@ if [ ! -z "$DEPLOYED_VERSION" -a "$DEPLOYED_VERSION" == "blue" ]; then
 fi
 # push a new version and map the route
 cf cs cleardb spark p-mysql
-cf cs p-rabbitmq standard p-rabbitmq
+cf cs cloudamqp lemur p-rabbitmq
 # cf cs p-mysql 100mb p-mysql
 # cf cs p-rabbitmq standard p-rabbitmq
 cf p "$CF_APP_NAME-$CURRENT_VERSION" -p lab-release/contactDataService-*.jar -f lab-repo/ci/tasks/manifest.yml

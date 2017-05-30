@@ -35,8 +35,8 @@ import junit.framework.TestCase;
 @SpringBootTest
 public class ContactRepositoryTests {
 	
-//	public static Contact contact = new Contact("title", "firstName", "lastName", "email", new Phone(PhoneType.work,"312-555-1212"));
-	public static Contact contact = new Contact("title", "firstName", "lastName", "email", new Phone(PhoneType.work,"312-555-1212"), "married");
+	public static Contact contact = new Contact("title", "firstName", "lastName", "email", new Phone(PhoneType.work,"312-555-1212"));
+//	public static Contact contact = new Contact("title", "firstName", "lastName", "email", new Phone(PhoneType.work,"312-555-1212"), "married");
 
 	private static final Log log = LogFactory.getLog(ContactRepositoryTests.class);
 	//The repository to test.
@@ -83,15 +83,15 @@ public class ContactRepositoryTests {
 	 * using that contact's marital_status to call and assert the 
 	 * findByMaritalStatus method's results.
 	 */
-	@Test
-	public void testfindByMaritalStatus() {
-		
-		Contact firstContact = contactRepo.findAll().iterator().next();
-		List<Contact> resultOfFindByMaritalStatus = contactRepo.findByMaritalStatus(firstContact.getMaritalStatus());
-		TestCase.assertEquals(
-				firstContact.getMaritalStatus(), 
-				resultOfFindByMaritalStatus.get(0).getMaritalStatus());
-	}
+//	@Test
+//	public void testfindByMaritalStatus() {
+//		
+//		Contact firstContact = contactRepo.findAll().iterator().next();
+//		List<Contact> resultOfFindByMaritalStatus = contactRepo.findByMaritalStatus(firstContact.getMaritalStatus());
+//		TestCase.assertEquals(
+//				firstContact.getMaritalStatus(), 
+//				resultOfFindByMaritalStatus.get(0).getMaritalStatus());
+//	}
 	
 	/**
 	 * Tests the repository's save method, by
@@ -107,9 +107,9 @@ public class ContactRepositoryTests {
 		final String lastName = "lastName";
 		final String email = "email";
 		final Phone phone = new Phone(PhoneType.work,"312-555-1212");
-		final String maritalStatus = "married";
-		Contact newContact = new Contact(title, firstName, lastName, email, phone, maritalStatus);
-//		Contact newContact = new Contact(title, firstName, lastName, email, phone);
+//		final String maritalStatus = "married";
+//		Contact newContact = new Contact(title, firstName, lastName, email, phone, maritalStatus);
+		Contact newContact = new Contact(title, firstName, lastName, email, phone);
 		newContact = contactRepo.save(newContact);
 		Contact savedContact = 
 				contactRepo.findOne(newContact.getId());

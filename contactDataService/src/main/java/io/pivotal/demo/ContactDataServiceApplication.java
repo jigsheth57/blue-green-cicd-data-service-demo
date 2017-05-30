@@ -97,9 +97,9 @@ public class ContactDataServiceApplication implements CommandLineRunner {
 			final String lastName = "Sheth";
 			final String email = "jigsheth@pivotal.io";
 			final Phone phone = new Phone(PhoneType.work,"650-846-1600");
-			final String maritalStatus = "married";
-			io.pivotal.demo.domain.Contact newContact = new io.pivotal.demo.domain.Contact(title, firstName, lastName, email, phone, maritalStatus);
-//			io.pivotal.demo.domain.Contact newContact = new io.pivotal.demo.domain.Contact(title, firstName, lastName, email, phone);
+//			final String maritalStatus = "married";
+//			io.pivotal.demo.domain.Contact newContact = new io.pivotal.demo.domain.Contact(title, firstName, lastName, email, phone, maritalStatus);
+			io.pivotal.demo.domain.Contact newContact = new io.pivotal.demo.domain.Contact(title, firstName, lastName, email, phone);
 			contactRepo.save(newContact);
 		}
 		
